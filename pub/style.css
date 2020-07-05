@@ -1,0 +1,102 @@
+#wrapper {
+    margin: 0 auto;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(152,229,241,1) 50%, rgba(0,212,255,1) 100%);
+}
+
+body {   
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.card__text {
+    margin: 0;  
+    padding: 7% 0%;
+    text-transform: uppercase;
+    font-size: 3rem;
+}
+
+.card__text h3 {
+    position: relative;
+    text-align: center;
+    padding: 0;
+    margin:0;
+}
+
+.card__text p {
+    text-align: center;
+    margin: 0;
+    margin-left: 20%;
+}
+
+.title__enter__left {
+    left: 100%;
+    
+    animation: title__enter__left 1.5s both;  
+}
+
+@keyframes title__enter__left {
+    100% {
+        left: 19%;
+        text-align: start;
+        
+    }
+}
+
+.text__enter__right {
+    position: relative;
+    right: 100%;
+    animation : text__enter__right 2.7s both;
+}
+
+@keyframes text__enter__right {
+    100% {
+        right: 20%;
+    }
+}
+
+
+.title__enter__right {
+    right: 100%;
+    animation: title__enter__right 1.5s both;  
+    animation-delay: 1s;
+}
+
+@keyframes title__enter__right {
+    100% {
+        right: 25%;
+    }
+}
+
+.text__enter__left {
+    position: relative;
+    left: 100%;
+    
+    animation : text__enter__left 2.3s both;
+    animation-delay: 0.5s;
+}
+
+@keyframes text__enter__left {
+    100% {
+        left: 7%;
+        text-align: start;
+    }
+}
+.title__letter {
+    text-align: center;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 100px;
+    opacity: 0;
+    animation: title__letter 8s both;
+}
+
+@keyframes title__letter {
+    100% {
+        opacity: 1;
+    }
+}
+
