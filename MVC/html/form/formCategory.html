@@ -1,0 +1,19 @@
+<div class="container">
+    <h1 class="text-center">Veuillez choisir la table</h1>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#Categorie">Catégorie</button>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#Clients">Clients</button>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#Prospects">Prospects</button>
+    <div id="Categorie" class="collapse">
+    <form name="form" method="POST" action="index.php?page=Category&action=AddDB">
+    <div class="form-group">
+    <h3 class="text-center">Catégorie</h3>
+    <input class="form-control"  type="hidden" name="parm0" value="category"/>
+    <label>Nom</label>
+    <input class="form-control" type="text" name="parm1" value=""/>
+    <label>Description</label>
+    <input class="form-control" type="text" name="parm2" value=""/>
+    <input class="btn btn-primary" type="submit"/>
+    </div>
+</form>
+    </div>
+  </div>'
