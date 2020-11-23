@@ -2,3 +2,124 @@ body {
     background-color: #186473;
 }
 
+
+#wrapper {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    color: white;
+}
+
+/* Menu top */
+
+nav .navbar__top {
+    list-style-type: none;
+    text-align: center; 
+    padding: 0;
+    margin: 0;
+    background-color: #1e2b37;
+    border-radius: 20px;
+}
+
+.navbar__top li {
+    display: inline-block;
+    padding: 2% 4%;
+    vertical-align: middle;
+}
+
+.navbar__top li:nth-child(3) {
+    width:25%;
+    padding: 0;
+}
+
+#nav__top__logo {
+    width: 70%;
+
+}
+
+.navbar__top li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Menu Bot */
+
+nav .navbar__bot {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #1e2b37;
+}
+
+.navbar__bot li {
+    display: inline-block;
+    padding: 2% 0%;
+    vertical-align: middle; 
+    width: 13%;
+    text-align: center;
+}
+
+.navbar__bot li a {
+ color: white;
+text-decoration: none;
+font-weight: bolder;
+}
+
+/* Index.html */
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+#index__video {
+    width: 100%;
+}
+
+#index__community > div  {
+   display: flex;
+   align-items: center;
+   width: 10%;
+}
+#index__community > i {
+    display: flex;
+    width: 10%;
+    font-size: 4em;
+}
+
+#index__form {
+    display: inline;
+    background-color: white;
+    border: 1px solid white;
+    background-color: #fff;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 5px 5px 10px #fff;
+}
+
+
+
+#index__form   label {
+    float: left;
+    margin-left: 10%;
+    color: black;
+   
+}
+
+#index__form   #index__newsletter {
+    text-align: center;
+    width: 30%;
+}
+
+#index__form   #index__newsletter__button {
+    margin-left: 10%;
+}
+
+
