@@ -33,4 +33,14 @@ class Model
         }
         return $list;
     }
+
+    public function addNewsletter()
+    {
+       
+    }
+
+    public function SendForm()
+    {
+        # code...
+    }
 }

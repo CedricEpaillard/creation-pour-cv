@@ -1,5 +1,6 @@
 body {
     background-color: #186473;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 
@@ -53,7 +54,7 @@ nav .navbar__bot {
 
 .navbar__bot li {
     display: inline-block;
-    padding: 2% 0%;
+    padding: 1% 0%;
     vertical-align: middle; 
     width: 13%;
     text-align: center;
@@ -83,43 +84,232 @@ h3 {
     width: 100%;
 }
 
-#index__community > div  {
-   display: flex;
-   align-items: center;
-   width: 10%;
+#index__community {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
 }
-#index__community > i {
-    display: flex;
-    width: 10%;
-    font-size: 4em;
+
+.index__figure figcaption {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+.index__figure >  i {
+background-color:#1e2b37 ;
+padding: 1%;
 }
 
 #index__form {
-    display: inline;
+    display: flex;
     background-color: white;
     border: 1px solid white;
-    background-color: #fff;
     border-radius: 20px;
     font-weight: bold;
-    box-shadow: 5px 5px 10px #fff;
+    box-shadow: 5px 5px 10px white;
+    padding: 1% 0;
 }
 
-
-
-#index__form   label {
-    float: left;
-    margin-left: 10%;
-    color: black;
-   
+#index__form label {
+margin:0  5%;
+color: black;
+margin-left: 15%;
 }
 
-#index__form   #index__newsletter {
-    text-align: center;
+#index__form #index__newsletter {
     width: 30%;
+    margin-right: 10%;
+    border-radius: 5px;
 }
 
-#index__form   #index__newsletter__button {
-    margin-left: 10%;
+#index__newsletter__button {
+    margin-right: 10%;
+    border-radius: 5px;
 }
 
+#form__newsletter input[type=text] {
+    border: none;
+    background-color: none;
+    outline: 0;
+    font-size: 25px;
+    width: 350px;
+    height: 30px;
+    background-color: #186473;
 
+}
+
+#form__newsletter input[type=text]:focus {
+    border: none;
+    outline: 0;
+}
+
+#newsletter__mail {
+    height: 40px;
+    width: 300px; 
+    overflow: auto;
+    margin: auto; 
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0; 
+}
+
+#index__section {
+    margin-top: 3%;
+}
+
+/* faq.html */
+
+#section__faq {
+    padding-bottom: 10%;
+}
+
+.accordion {
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    font-size: 15px;
+    transition: 0.4s;
+    background-color: #5f9ea0
+  }
+  
+  .active, .accordion:hover {
+      background-color: #578f91;
+  }
+  
+  .faq__toggle {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #1e2b37;
+
+  }
+
+  /* contact.html */
+
+  #contact__article {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  #contact__link {
+      text-decoration: none;
+      color: white;
+      border: 1px solid black;
+      padding: 0 2%;
+      box-shadow: 4px 4px 3px black;
+  }
+
+  #contact__form {
+      color: black;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 4px 4px 3px white;
+      margin-bottom: 4% ;
+      display: inline-block;
+  }
+
+  #contact__form label {
+    margin-left: 5%;
+    display: inline-block;
+    width: 36%;
+    text-align: middle;
+    padding-bottom: 2%;
+    font-weight: bolder;
+  }
+
+  #contact__form textarea {
+      vertical-align: top;
+      border-radius: 5px;
+  }
+
+  #contact__form input {
+      width: 25%;
+      border-radius: 5px;
+      overflow: hidden;
+  }
+
+  #contact__form div  {
+      width: 100%;
+      padding: 3% 0;
+  }
+
+  #contact__form div button {
+      float: left;
+      margin-left: 31.5%;
+  }
+
+  /* legal_notice.html */
+
+  /* press__kit.html */
+
+  #press__logo  {
+      display: flex;
+      width: 100%;
+  }
+
+  #press__logo img {
+      margin: 0 10%; 
+      width: 30%;   
+  }
+
+  #press__icon  {
+    display: flex;
+    width: 100%;
+}
+
+#press__icon a {
+    width: 20%;
+    margin: 0 20%; 
+}
+
+#press__icon img {
+    width: 100%;   
+}
+
+#press__screen  {
+    display: flex;
+    width: 100%;
+}
+
+#press__screen a {
+    width: 40%;
+    margin: 0 auto; 
+    padding: 0 auto;
+}
+
+#press__screen img {
+    width: 100%;   
+}
+
+#press__company  {
+    display: flex;
+    width: 100%;
+}
+
+#press__company a {
+    width: 40%;
+    margin: 0 auto; 
+    padding: 0 auto;
+}
+
+#press__company img {
+    width: 100%;   
+}
+
+#press__video  {
+    display: flex;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+#press__video a {
+    width: 100%;
+    margin: 0 auto; 
+    padding: 0 auto;
+}
+
+#press__video video {
+    width: 100%;   
+}

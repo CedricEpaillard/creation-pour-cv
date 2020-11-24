@@ -1,33 +1,42 @@
-<article>
+<section>
   <header>
     <h1>Where do you get the game</h1>
     <h2>Video presentation</h2>
   </header>
 
-  <video src="../video/start_game.mp4" id="index__video" controls>
+  <video src="public/video/start_game.mp4" id="index__video" controls>
     Cette vidéo ne peut être affichée sur votre navigateur Internet.<br>
   </video>
 
   <h2>Join the community</h2>
 
   <div id="index__community">
-    Discord
-    <i class="fab fa-discord fa-10x"></i>
-    Twitter
-    <i class="fab fa-twitter fa-10x"></i>
+    <figure class="index__figure">
+      <figcaption>
+        Discord
+      </figcaption>
+      <i class="fab fa-discord fa-10x"></i>
+    </figure>
+
+    <figure class="index__figure">
+      <figcaption>
+        Twitter
+      </figcaption>
+      <i class="fab fa-twitter fa-10x"></i>
+    </figure>
   </div>
+
 
   <h2>Sign up for the newletters, you do not miss anything !</h2>
 
-  <form action="../../Model/model.php" method="POST" id="index__form">
-
-      <label for="name">Mail* :</label>
-      <input type="text" name="mail" id="index__newsletter" placeholder="xx@yy.z">
-    <input type="button" id="index__newsletter__button" value="Recevoir les newsletters">
- 
+  <form action="index.php?page=newsletter" method="POST" id="index__form">
+    <label for="name">Mail*:</label>
+    <input type="text" name="mail"id="index__newsletter" placeholder="xx@yy.z">
+    <input type="submit" id="index__newsletter__button" value="Recevoir les newsletters">
   </form>
-  <section>
-    <h3>Description of this game</h3>
+
+  <article id="index__section">
+    <h2>Description of this game</h2>
 
     <p>
       Cupcake ipsum dolor sit amet cake cupcake oat cake ice cream. Chocolate cake pie oat cake carrot cake
@@ -41,6 +50,18 @@
       cotton candy
       I love cheesecake. Dessert liquorice dragée cookie halvah.
     </p>
-  </section>
 
-</article>
+    <p>
+      Cupcake ipsum dolor sit amet cake cupcake oat cake ice cream. Chocolate cake pie oat cake carrot cake
+      liquorice wafer tootsie roll. Danish tiramisu I love pastry I love macaroon chocolate cake gingerbread. Chocolate
+      bar bear claw caramels cheesecake.
+
+      Gingerbread I love candy canes. Carrot cake I love I love jujubes tiramisu caramels chupa chups topping. Pudding I
+      love tiramisu I love.
+
+      Icing bear claw chocolate chocolate bar croissant toffee. Biscuit donut tootsie roll lemon drops lemon drops
+      cotton candy
+      I love cheesecake. Dessert liquorice dragée cookie halvah.
+    </p>
+  </article>
+</section>
