@@ -39,9 +39,11 @@ class Controller
                 $this->model->addNewsletter($mail);
                 $this->view->displayAddNewsletter($mail);
             break;
-            case 'contact': 
-                $this->model->sendForm();
-                $this->view->displaySendForm();
+            case 'sendForm': 
+                $mail = (isset($_POST['mail'])) ? $_POST['mail'] : NULL;
+                $textarea = (isset($_POST['message'])) ? $_POST['message'] : NULL;
+                $this->model->sendForm($mail,$textarea);
+                $this->view->displaySendForm($mail,$textarea);
             break;
                 
             

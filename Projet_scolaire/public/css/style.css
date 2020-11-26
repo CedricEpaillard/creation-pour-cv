@@ -128,15 +128,14 @@ margin-left: 15%;
     border-radius: 5px;
 }
 
+
 #form__newsletter input[type=text] {
     border: none;
-    background-color: none;
     outline: 0;
-    font-size: 25px;
-    width: 350px;
-    height: 30px;
     background-color: #186473;
-
+    color: white;
+    font-size: 16px;
+    width: 25%;
 }
 
 #form__newsletter input[type=text]:focus {
@@ -144,14 +143,6 @@ margin-left: 15%;
     outline: 0;
 }
 
-#newsletter__mail {
-    height: 40px;
-    width: 300px; 
-    overflow: auto;
-    margin: auto; 
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0; 
-}
 
 #index__section {
     margin-top: 3%;
@@ -239,6 +230,21 @@ margin-left: 15%;
       float: left;
       margin-left: 31.5%;
   }
+
+  
+#form__sendForm input[type=text]  {
+    border: none;
+    outline: 0;
+    background-color: #186473;
+    color: white;
+    font-size: 16px;
+    width: 25%;
+}
+
+#form__sendForm input[type=text]:focus {
+    border: none;
+    outline: 0;
+}
 
   /* legal_notice.html */
 

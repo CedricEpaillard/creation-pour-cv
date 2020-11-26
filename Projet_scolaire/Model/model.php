@@ -1,4 +1,6 @@
 <?php
+ use PHPMailer\PHPMailer\PHPMailer;
+ use PHPMailer\PHPMailer\Exception;
 class Model
 {
       
@@ -23,24 +25,38 @@ class Model
             );
     }
     // catch (Execption $e) {die('Erreur : '.$e->getMessage()); }
-    public function getList()
+    public function addNewsletter($mail)
     {
-        $requete = "SELECT * FROM user";
-        $result = $this->connection->query($requete);
-        $list = array();
-        if ($result) {
-            $list = $result->fetchAll(PDO::FETCH_ASSOC);
+        $requete = $this->connection->prepare("INSERT INTO  bdd_mail VALUES (NULL, :mail)");
+        $requete->bindParam(':mail', $mail);
+        $result = $requete->execute();
+        return $result;
+    }
+
+    public function SendForm($mail,$textarea)
+    {    
+        require 'PHPMailer/src/Exception.php';
+        require 'PHPMailer/src/PHPMailer.php';
+        require 'PHPMailer/src/SMTP.php';
+            
+        $mail = new PHPMailer();
+        
+        $email = $_POST['mail'];
+        $textarea = $_POST['message'];
+        
+        try {
+            $mail->From = $email; 
+            $mail->Subject = ' Test mail'; 
+            $mail->MsgHTML($textarea);
+            $mail->AltBody="Message HTML, votre messagerie n'accepte pas ce format";
+            $mail->CharSet = 'UTF-8';        
+              $mail->AddAddress("cedric.epaillard11@gmail.com");
+              $mail->send();
+          
         }
-        return $list;
-    }
-
-    public function addNewsletter()
-    {
-       
-    }
-
-    public function SendForm()
-    {
-        # code...
+         catch (Exception $e) {
+              echo 'Message non envoyé'; 
+              echo 'Erreur: ' . $mail->ErrorInfo;
+             }
     }
 }

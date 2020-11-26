@@ -1,0 +1,63 @@
+.form__register {
+padding:0 auto;
+margin: 0 auto;
+    background-color: lightgrey;
+    width: 25%;
+    padding-bottom: 1%;
+    margin-top: 10%;
+}
+
+.form__register h1 {
+    text-align: center;
+}
+
+.form__register input {
+    text-align: center;
+    display: block;
+    padding: 0 auto;
+    margin: 0 auto;
+    margin-bottom: 2%;
+}
+
+.admin__home {
+    display: flex;
+}
+
+.admin__home div {
+    background-color: rgb(144, 159, 173);
+    align-items: center;
+    margin:  10% 14%;
+    justify-content: center;
+    padding: 2%;
+}
+
+.admin__home div button   {
+position: relative;
+left: 40%;
+}
+
+.admin__home div button a {
+    text-decoration: none;
+    color: black;
+}
+
+table,
+td {
+    border: 1px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+.form__register label {
+float: left;
+margin-left: 20%;
+}
+
+#change__data {
+    width: 40%;
+}
+

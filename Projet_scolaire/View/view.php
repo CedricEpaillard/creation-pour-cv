@@ -52,13 +52,16 @@
         {   
             $this->page .= file_get_contents("public/html/newsletter.html");
             $this->page = str_replace("{mail}", $mail, $this->page);
-            $this->page .= var_dump($mail);
             $this->display();
             
         }
 
-        public function displaySendForm()
+        public function displaySendForm($mail, $textarea)
         {
-            echo "test";
+            $this->page .= file_get_contents("public/html/sendForm.html");
+            $this->page = str_replace("{mail}", $mail, $this->page);
+            $this->page = str_replace("{message}", $textarea, $this->page);
+
+            $this->display();
         }
     }
