@@ -105,6 +105,96 @@ class Model
             return $result;
         }
 
+        public function addMailDb($mail)
+        {
+            $mail = isset($_POST['parm0']) ? $_POST['parm0'] : null;    
+            $requete = $this->connection->prepare("INSERT INTO bdd_mail VALUES (NULL, :mail)");
+            $requete->bindParam(':mail', $mail);
+            $result = $requete->execute();
+            return $result;
+        }
+
+        public function deleteDb()
+        {
+            $id = isset($_GET['id']) ? $_GET['id'] : null;    
+            $requete = $this->connection->prepare("DELETE FROM bdd_mail WHERE id=:id");
+            $requete->bindParam(':id', $id);
+            $result = $requete->execute();
+            return $result;
+        }
+
+        public function takeAllPatch()
+        {
+            $requete = "SELECT * FROM news";
+            $result = $this->connection->query($requete);
+            $list = array();
+            if ($result) {
+                $list = $result->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return $list;
+        }
+
+        public function addPatchNote($title,$spoiler,$contenu)
+        {
+            $title = isset($_POST['parm0']) ? $_POST['parm0'] : null;   
+            $spoiler = isset($_POST['parm1']) ? $_POST['parm1'] : null;    
+            $contenu = isset($_POST['parm2']) ? $_POST['parm2'] : null;    
+            if(($title && $spoiler && $contenu) <3 ){
+                $result = false;
+                return $result;
+            }
+            elseif ($title >50 || $spoiler >100) {
+                $result = false;
+                return $result;
+            }
+            else {
+            $requete = $this->connection->prepare("INSERT INTO news VALUES (NULL, :title, :spoiler, :contenu)");
+            $requete->bindParam(':title', $title);
+            $requete->bindParam(':spoiler', $spoiler);
+            $requete->bindParam(':contenu', $contenu);
+            $result = $requete->execute();
+            return $result;
+            }
+        }
+
+        public function takePatch($id)
+        {
+            $requete = $this->connection->prepare("SELECT id, titre, spoiler, contenu FROM news WHERE id=:id");
+            $requete->bindParam(':id', $id);
+            $result = $requete->execute();
+            $list = array();
+            if ($result) {
+                $list = $requete->fetch(PDO::FETCH_NUM);
+            }
+            return $list;
+        }
+
+        public function updatePatchDb()
+        {
+            $id = isset($_POST['parm0']) ? $_POST['parm0'] : null;
+            $titre = isset($_POST['parm1']) ? $_POST['parm1'] : null;
+            $spoiler = isset($_POST['parm2']) ? $_POST['parm2'] : null;
+            $contenu = isset($_POST['parm3']) ? $_POST['parm3'] : null;
+            $requete = $this->connection->prepare(
+                "UPDATE news SET titre=:titre, spoiler=:spoiler, contenu=:contenu WHERE id=:id"
+            );  
+            $requete->bindParam(':titre', $titre);
+            $requete->bindParam(':spoiler', $spoiler);
+            $requete->bindParam(':contenu', $contenu);
+            $requete->bindParam(':id', $id);
+            $result = $requete->execute();
+            return $result;
+        }
+
+        public function deletePatchDb()
+        {
+            $id = isset($_GET['id']) ? $_GET['id'] : null;    
+            $requete = $this->connection->prepare("DELETE FROM news WHERE id=:id");
+            $requete->bindParam(':id', $id);
+            $result = $requete->execute();
+            return $result;
+        }
+
 
 
 

@@ -52,11 +52,11 @@
             else {
                 include('model.php');
             }
-           
         }
 
         public function displayListMail($list)
-        {  
+        { 
+    $this->page .= '<link rel="stylesheet" href="style.css">'; 
     $this->page .= "<table>";
     $this->page .= "<thead>";
     $this->page .= "<tr>";
@@ -83,10 +83,13 @@
       $this->page .= "<td>";
       $this->page .= '<a href="index.php?page=UpdateMail&id=' . $element['id'].'">Editer</a></td>';
       $this->page .= "<td>";
-      $this->page .= '<a href="index.php?page=DeleteMail&id=' . $element['id'] .'">Supprimer</a></td>';
+      $this->page .= '<a href="index.php?page=deleteMail&id=' . $element['id'] .'">Supprimer</a></td>';
       $this->page .= "</tr>";
     }
     $this->page .= "</table>";
+    $this->page .= '<a href="index.php?page=formAddDb" class="button__admin">Ajouter</a>';
+    $this->page .= '<a href="index.php?page=patchNote" class="button__admin">Retour au patch note</a>';
+
             $this->display();
         }
 
@@ -104,6 +107,110 @@
         ';
         $this->display();
         }
+
+        public function displayFormAddDb()
+        {
+           $this->page .= file_get_contents('html/form.html');
+           $this->display();
+        }
+
+        public function displayListPatch($list)
+        {
+                $this->page .= '<link rel="stylesheet" href="style.css">';
+                $this->page .= "<table>";
+                $this->page .= "<thead>";
+                $this->page .= "<tr>";
+                $this->page .= "<th scope='col'>";
+                $this->page .= "Titre";
+                $this->page .= "</th>";
+                $this->page .= "<th scope='col'>";
+                $this->page .= "Spoiler";
+                $this->page .= "</th>";
+                $this->page .= "<th scope='col'>";
+                $this->page .= "Contenu";
+                $this->page .= "</th>";
+                $this->page .= "<th scope='col'>";
+                $this->page .= "Modifier";
+                $this->page .= "</th>";
+                $this->page .= "<th scope='col'>";
+                $this->page .= "Supprimer";
+                $this->page .= "</th>";
+                $this->page .= "</tr>";
+                $this->page .= "</thead>";
+                foreach ($list as $element) {
+                  $this->page .= "<tr>";
+                  $this->page .= "<td>";
+                  $this->page .= $element['titre'] . "</td>";
+                  $this->page .= "<td>";
+                  $this->page .= $element['spoiler'] . "</td>";
+                  $this->page .= "<td>";
+                  $this->page .= $element['contenu'] . "</td>";
+                  $this->page .= "<td>";
+                  $this->page .= '<a href="index.php?page=updatePatch&id=' . $element['id'].'">Editer</a></td>';
+                  $this->page .= "<td>";
+                  $this->page .= '<a href="index.php?page=deletePatch&id=' . $element['id'] .'">Supprimer</a></td>';
+                  $this->page .= "</tr>";
+                }
+                $this->page .= "</table>";
+                $this->page .= '<a href="index.php?page=formAddPatch" class="button__admin">Ajouter</a>';
+                $this->page .= '<a href="index.php?page=bddMail" class="button__admin">Retour au Mail</a>';
+                $this->display();
+            }
+
+            public function displayFormAddPatch()
+            {
+                $this->page .= file_get_contents('html/addPatchNote.html');
+                $this->display();
+            }
+
+            public function displayPatchNoteAdd($result)
+            {
+                if($result) {
+                    header('Location: index.php?page=patchNote');
+                var_dump($result);
+                } else {
+                    echo "Veuillez vérifier que vous n'avez pas dépassé les 50 caractères pour le titre et 100 caractères pour le spoiler
+                    <a href='index.php?page=formAddPatch'>Retour au formulaire</a>";
+                }
+            }
+
+            public function displayChangeDataPatch($parm)
+            {
+                $this->page .= '<link rel="stylesheet" href="style.css">
+                <form class="form__register" name="form" method="POST" action="index.php?page=updatePatchDb">
+                    <label>Title</label>
+                    <input type="hidden" name="parm0" value="'.$parm[0].'"/>
+                    <input type="text" name="parm1" value="'.$parm[1].'"/>
+                    <label>Spoiler</label>
+                    <input type="text" id="change__data" name="parm2" value="'.$parm[2].'"/>
+                    <label>Contenu</label>
+                    <input type="text" id="change__data" name="parm3" value="'.$parm[3].'"/>
+                    <input type="submit"/>
+                </form>';
+                $this->display();
+            }
+
+            public function displayresultUpdatePatch($result)
+            {
+                if($result) {
+                    header('Location: index.php?page=patchNote');
+                }
+                else {
+                    echo "Un problème est survenu
+                    <a href='index.php?page=patchNote'>Retour aux patch</a>";
+                }
+            }
+
+            public function displayResultDeletePatch($result)
+            {
+                if($result) {
+                    header('Location: index.php?page=patchNote');
+                }
+                else {
+                    echo "Un problème est survenu
+                    <a href='index.php?page=patchNote'>Retour aux patch</a>";
+                }
+            }
 
        
 
