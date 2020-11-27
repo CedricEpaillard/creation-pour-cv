@@ -177,14 +177,14 @@
             public function displayChangeDataPatch($parm)
             {
                 $this->page .= '<link rel="stylesheet" href="style.css">
-                <form class="form__register" name="form" method="POST" action="index.php?page=updatePatchDb">
+                <form class="form__change__data" name="form" method="POST" action="index.php?page=updatePatchDb">
                     <label>Title</label>
                     <input type="hidden" name="parm0" value="'.$parm[0].'"/>
-                    <input type="text" name="parm1" value="'.$parm[1].'"/>
+                    <input type="text" maxlength="50" class="change__data__patch" name="parm1" value="'.$parm[1].'"/>
                     <label>Spoiler</label>
-                    <input type="text" id="change__data" name="parm2" value="'.$parm[2].'"/>
+                    <input type="text" maxlength="100" class="change__data__patch" name="parm2" value="'.$parm[2].'"/>
                     <label>Contenu</label>
-                    <input type="text" id="change__data" name="parm3" value="'.$parm[3].'"/>
+                    <input type="text" class="change__data__patch" name="parm3" value="'.$parm[3].'"/>
                     <input type="submit"/>
                 </form>';
                 $this->display();

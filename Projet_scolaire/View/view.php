@@ -64,4 +64,44 @@
 
             $this->display();
         }
+
+        public function displayListNews($list)
+        {
+            $this->page .= '<link rel="stylesheet" href="public/css/style.css">'; 
+    foreach ($list as $element) {
+      $this->page .= "<a href='index.php?page=patchNoteEntier&id=".$element['id']."' class='news__link'>";
+      $this->page .= "<div class='news__card'>";
+      $this->page .= "<h1>";
+      $this->page .= $element['titre'];
+      $this->page .= "</h1>";
+      $this->page .= "<img src='public/img/tar_icon.png' class='news__icon'>";
+      $this->page .= "<span>".$element['spoiler']."</span>";
+      $this->page .= "</div>";
+      $this->page .= "</a>";
+    }
+            $this->display();
+        }
+
+        public function displayPatchNoteEntier($parm)
+        {
+            $this->page .= '<link rel="stylesheet" href="public/css/style.css">'; 
+               $this->page .= "<h1 class='patchNoteEntier__title'>".$parm[0]."</h1>";
+               $this->page .= "<h2 class='patchNoteEntier__dl'><a href='#'>Download TechAge Rebellion</a></h2>";
+               if ( strpos($parm[1], "<li>") !== false) {
+                $this->page .= "<div class='patchNoteEntier__contenu'>".$parm[1]."</div>";
+
+               } else {
+                   if(strlen($parm[1]) > 149) {
+                      $newString = substr_replace($parm[1], "<br />", 149, 149);
+                   
+                $this->page .= "<div class='patchNoteEntier__contenu__simple'>".$newString."</div>";  
+                   }
+               }
+           $this->display();
+        }
+
+
+
+
+
     }

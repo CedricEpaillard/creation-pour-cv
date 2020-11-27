@@ -59,4 +59,27 @@ class Model
               echo 'Erreur: ' . $mail->ErrorInfo;
              }
     }
+
+    public function listNews()
+    {
+        $requete = "SELECT * FROM news";
+        $result = $this->connection->query($requete);
+        $list = array();
+        if ($result) {
+            $list = $result->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $list;
+    }
+
+    public function patchNoteEntier($id)
+    {
+        $requete = $this->connection->prepare("SELECT titre, contenu FROM news WHERE id=:id");
+        $requete->bindParam(':id', $id);
+        $result = $requete->execute();
+        $list = array();
+        if ($result) {
+            $list = $requete->fetch(PDO::FETCH_NUM);
+        }
+        return $list;
+    }
 }

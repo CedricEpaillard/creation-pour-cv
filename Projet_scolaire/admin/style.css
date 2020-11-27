@@ -60,13 +60,23 @@ td {
     text-align: center;
 }
 
-.form__register label {
-float: left;
-margin-left: 20%;
+.form__change__data  {
+margin: 0 auto;
+    background-color: lightgrey;
+    width: 25%;
+    padding: 4%;
+    margin-top: 10%;
+    display: block;
 }
 
-#change__data {
-    width: 40%;
+
+.form__change__data > input {
+    width: 100%;
+    text-align: center;
+}
+
+.form__change__data input:last-child {
+    width: 25%;
 }
 
 .button__admin   {

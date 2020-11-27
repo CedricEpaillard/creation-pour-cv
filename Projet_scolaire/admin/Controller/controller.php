@@ -37,7 +37,6 @@ class Controller
             case 'bddMail': 
                 $list = $this->model->listMail();
                 $this->view->displayListMail($list);
-                $action = (isset($_GET['action'])) ? $_GET['action'] : NULL;
             break;
             case 'UpdateMail': 
                         $id = (isset($_GET['id'])) ? $_GET['id'] : NULL;

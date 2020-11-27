@@ -45,9 +45,15 @@ class Controller
                 $this->model->sendForm($mail,$textarea);
                 $this->view->displaySendForm($mail,$textarea);
             break;
-                
-            
-
+            case 'news': 
+                $list = $this->model->listNews();
+                $this->view->displayListNews($list);
+            break;              
+            case 'patchNoteEntier': 
+                $id = (isset($_GET['id'])) ? $_GET['id'] : NULL;
+                $list = $this->model->patchNoteEntier($id);
+                $this->view->displayPatchNoteEntier($list);
+            break;
             default:
                 echo "default";
                 break;
