@@ -35,15 +35,15 @@ class Controller
                 $this->view->displayPress_kit();
             break;
             case 'newsletter': 
-                $mail = (isset($_POST['mail'])) ? $_POST['mail'] : NULL;
-                $this->model->addNewsletter($mail);
-                $this->view->displayAddNewsletter($mail);
+                $mail = htmlspecialchars((isset($_POST['mail'])) ? $_POST['mail'] : NULL);
+              $result =  $this->model->addNewsletter($mail);
+                $this->view->displayAddNewsletter($mail,$result);
             break;
             case 'sendForm': 
-                $mail = (isset($_POST['mail'])) ? $_POST['mail'] : NULL;
-                $textarea = (isset($_POST['message'])) ? $_POST['message'] : NULL;
-                $this->model->sendForm($mail,$textarea);
-                $this->view->displaySendForm($mail,$textarea);
+                $mail = htmlspecialchars((isset($_POST['mail'])) ? $_POST['mail'] : NULL);
+                $textarea = htmlspecialchars((isset($_POST['message'])) ? $_POST['message'] : NULL);
+               $result = $this->model->sendForm($mail,$textarea);
+                $this->view->displaySendForm($mail,$textarea, $result);
             break;
             case 'news': 
                 $list = $this->model->listNews();
@@ -53,6 +53,10 @@ class Controller
                 $id = (isset($_GET['id'])) ? $_GET['id'] : NULL;
                 $list = $this->model->patchNoteEntier($id);
                 $this->view->displayPatchNoteEntier($list);
+            break;
+            case 'road_map': 
+            $list =  $this->model->roadMap();
+            $this->view->displayRoadMap($list);
             break;
             default:
                 echo "default";

@@ -198,6 +198,7 @@
                 else {
                     echo "Un problème est survenu
                     <a href='index.php?page=patchNote'>Retour aux patch</a>";
+                    var_dump($result);
                 }
             }
 

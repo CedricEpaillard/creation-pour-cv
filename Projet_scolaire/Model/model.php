@@ -1,13 +1,15 @@
 <?php
- use PHPMailer\PHPMailer\PHPMailer;
- use PHPMailer\PHPMailer\Exception;
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class Model
 {
-      
-      const SERVER = "localhost";
-      const USER = "root";
-      const PASSWORD = "";
-      const BASE = "tar";
+
+    const SERVER = "localhost";
+    const USER = "root";
+    const PASSWORD = "";
+    const BASE = "tar";
 
 
     private $connection;
@@ -25,39 +27,49 @@ class Model
             );
     }
     // catch (Execption $e) {die('Erreur : '.$e->getMessage()); }
-    public function addNewsletter($mail)
-    {
-        $requete = $this->connection->prepare("INSERT INTO  bdd_mail VALUES (NULL, :mail)");
-        $requete->bindParam(':mail', $mail);
-        $result = $requete->execute();
-        return $result;
+    public function addNewsletter($mail){
+
+    $requete = $this->connection->prepare("SELECT mail FROM bdd_mail WHERE mail=:mail");
+    $requete->bindParam(':mail', $mail);
+    $result = $requete->execute();
+    $list = array();
+    $list = $requete->fetch(PDO::FETCH_NUM);
+   // var_dump($list);
+        if ($list !== false) {
+            $result = "Adresse valide mais déjà existante";
+            return $result;
+        } else {
+            if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+                $result = "Veuilez entrer une adresse mail valide";
+                return $result;
+            } else {
+                $requete = $this->connection->prepare("INSERT INTO  bdd_mail VALUES (NULL, :mail)");
+                $requete->bindParam(':mail', $mail);
+                $result = $requete->execute();
+                $result = $mail;
+                return $result;
+            }
+        }
     }
 
-    public function SendForm($mail,$textarea)
-    {    
-        require 'PHPMailer/src/Exception.php';
-        require 'PHPMailer/src/PHPMailer.php';
-        require 'PHPMailer/src/SMTP.php';
-            
-        $mail = new PHPMailer();
-        
-        $email = $_POST['mail'];
+    public function SendForm($mail, $textarea)
+    {
+
+
+        $mail = $_POST['mail'];
         $textarea = $_POST['message'];
-        
-        try {
-            $mail->From = $email; 
-            $mail->Subject = ' Test mail'; 
-            $mail->MsgHTML($textarea);
-            $mail->AltBody="Message HTML, votre messagerie n'accepte pas ce format";
-            $mail->CharSet = 'UTF-8';        
-              $mail->AddAddress("cedric.epaillard11@gmail.com");
-              $mail->send();
-          
+        if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            $result = "Veuilez entrer une adresse mail valide";
+            return $result;
+            var_dump($result);
+        } else {
+$to = "cedric.epaillard11@gmail.com";
+$objet = "Contact depuis le site internet";
+mail($to,$objet,$textarea, $mail);
+$result = true;
+return $result;
         }
-         catch (Exception $e) {
-              echo 'Message non envoyé'; 
-              echo 'Erreur: ' . $mail->ErrorInfo;
-             }
+       
     }
 
     public function listNews()
@@ -79,6 +91,16 @@ class Model
         $list = array();
         if ($result) {
             $list = $requete->fetch(PDO::FETCH_NUM);
+        }
+        return $list;
+    }
+
+    public function roadMap()
+    {
+        $requete = "SELECT spoiler FROM news WHERE id=(SELECT max(id) FROM news)";
+        $result = $this->connection->query($requete);
+        if ($result) {
+            $list = $result->fetchAll(PDO::FETCH_ASSOC);
         }
         return $list;
     }

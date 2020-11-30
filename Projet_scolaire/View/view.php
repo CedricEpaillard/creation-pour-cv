@@ -48,21 +48,38 @@
             $this->display();
         }
 
-        public function displayAddNewsletter($mail)
+        public function displayAddNewsletter($mail,$result)
         {   
+            if( $result !== 1) {
             $this->page .= file_get_contents("public/html/newsletter.html");
-            $this->page = str_replace("{mail}", $mail, $this->page);
+            $this->page = str_replace("{mail}", $result, $this->page);
             $this->display();
-            
+            }
+            else {
+                $this->page .= file_get_contents("public/html/newsletter.html");
+                $this->page = str_replace("{mail}", $mail, $this->page);
+                $this->display();
+            }
         }
 
-        public function displaySendForm($mail, $textarea)
-        {
-            $this->page .= file_get_contents("public/html/sendForm.html");
-            $this->page = str_replace("{mail}", $mail, $this->page);
-            $this->page = str_replace("{message}", $textarea, $this->page);
+        public function displaySendForm($mail, $textarea, $result)
+        {   
+            if( $result !== true){
+                $this->page .= file_get_contents("public/html/sendForm.html");
+                $this->page = str_replace("{mail}", $result, $this->page);
+                $this->page = str_replace("{message}", $textarea, $this->page);
+                $this->display();  
+         //       var_dump($result);
+            }
+            else {
+                $this->page .= file_get_contents("public/html/sendForm.html");
+                $this->page = str_replace("{mail}", $mail, $this->page);
+                $this->page = str_replace("{message}", $textarea, $this->page);
+         //       var_dump($result);
+    
+                $this->display();
 
-            $this->display();
+            }
         }
 
         public function displayListNews($list)
@@ -89,15 +106,30 @@
                $this->page .= "<h2 class='patchNoteEntier__dl'><a href='#'>Download TechAge Rebellion</a></h2>";
                if ( strpos($parm[1], "<li>") !== false) {
                 $this->page .= "<div class='patchNoteEntier__contenu'>".$parm[1]."</div>";
-
                } else {
-                   if(strlen($parm[1]) > 149) {
-                      $newString = substr_replace($parm[1], "<br />", 149, 149);
-                   
-                $this->page .= "<div class='patchNoteEntier__contenu__simple'>".$newString."</div>";  
+                
+                   if(strpos($parm[1], "<li>") == false) {
+                   $this->page .= "<div class='patchNoteEntier__contenu__simple'>".$parm[1]."</div>";  
+
                    }
                }
            $this->display();
+        }
+
+        public function displayRoadMap($list)
+        {
+            foreach ($list as $element) {
+            $this->page .= '<link rel="stylesheet" href="public/css/style.css">'; 
+            $this->page .= "<div class='news__card__roadMap'>";
+            $this->page .= "<h1>";
+            $this->page .= "In the near future..";
+            $this->page .= "</h1>";
+            $this->page .= "<img src='public/img/tar_icon.png' class='news__icon'>";
+            $this->page .= "<span>".$element['spoiler']."</span>";
+            $this->page .= "</div>";
+            }
+            $this->display();
+
         }
 
 
