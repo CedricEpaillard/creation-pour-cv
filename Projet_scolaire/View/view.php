@@ -107,11 +107,7 @@
                if ( strpos($parm[1], "<li>") !== false) {
                 $this->page .= "<div class='patchNoteEntier__contenu'>".$parm[1]."</div>";
                } else {
-                
-                   if(strpos($parm[1], "<li>") == false) {
                    $this->page .= "<div class='patchNoteEntier__contenu__simple'>".$parm[1]."</div>";  
-
-                   }
                }
            $this->display();
         }

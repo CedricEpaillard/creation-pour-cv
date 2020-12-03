@@ -1,8 +1,5 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
 class Model
 {
 
@@ -27,14 +24,15 @@ class Model
             );
     }
     // catch (Execption $e) {die('Erreur : '.$e->getMessage()); }
-    public function addNewsletter($mail){
+    public function addNewsletter($mail)
+    {
 
-    $requete = $this->connection->prepare("SELECT mail FROM bdd_mail WHERE mail=:mail");
-    $requete->bindParam(':mail', $mail);
-    $result = $requete->execute();
-    $list = array();
-    $list = $requete->fetch(PDO::FETCH_NUM);
-   // var_dump($list);
+        $requete = $this->connection->prepare("SELECT mail FROM bdd_mail WHERE mail=:mail");
+        $requete->bindParam(':mail', $mail);
+        $result = $requete->execute();
+        $list = array();
+        $list = $requete->fetch(PDO::FETCH_NUM);
+        // var_dump($list);
         if ($list !== false) {
             $result = "Adresse valide mais déjà existante";
             return $result;
@@ -54,8 +52,6 @@ class Model
 
     public function SendForm($mail, $textarea)
     {
-
-
         $mail = $_POST['mail'];
         $textarea = $_POST['message'];
         if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
@@ -63,13 +59,12 @@ class Model
             return $result;
             var_dump($result);
         } else {
-$to = "cedric.epaillard11@gmail.com";
-$objet = "Contact depuis le site internet";
-mail($to,$objet,$textarea, $mail);
-$result = true;
-return $result;
+            $to = "cedric.epaillard11@gmail.com";
+            $objet = "Contact depuis le site internet";
+            mail($to, $objet, $textarea, $mail);
+            $result = true;
+            return $result;
         }
-       
     }
 
     public function listNews()
@@ -101,6 +96,7 @@ return $result;
         $result = $this->connection->query($requete);
         if ($result) {
             $list = $result->fetchAll(PDO::FETCH_ASSOC);
+         //   var_dump($list);
         }
         return $list;
     }

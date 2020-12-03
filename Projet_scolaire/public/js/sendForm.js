@@ -8,3 +8,4 @@ var chrono = setInterval(function(){
     window.location = "index.php?page=contact";}
 
 }, 1000);
+

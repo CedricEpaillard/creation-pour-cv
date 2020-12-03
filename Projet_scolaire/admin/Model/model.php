@@ -23,14 +23,10 @@ class Model
             );
     }
     // catch (Execption $e) {die('Erreur : '.$e->getMessage()); }
+
+
     public function login($pseudo,$mdp)
     {
-
-        if (isset($_POST['pseudo'], $_POST['password'])) {
-            // récupérer l'pseudo 
-            $pseudo = ($_POST['pseudo']);
-            // récupérer le mot de passe 
-            $mdp = ($_POST['password']);
             $requete =$this->connection->prepare('SELECT pseudo, mdp FROM  administrateur WHERE pseudo = :pseudo AND mdp = :mdp ');
             $requete->bindParam(':pseudo', $pseudo);
             $requete->bindParam(':mdp', $mdp);
@@ -47,12 +43,15 @@ class Model
                 $result = 0;
                 return $result;
             }
-        } else {
+         else {
             $result = 0;
             return $result;
         }
     }
 
+    /**
+     * Enregistrer le mot de passe crypter / pseudo 
+     */
         public function registerMdp($pseudo,$mdp) {
                 $mdp = hash('sha256', ($mdp));
                 $requete = $this->connection->prepare('INSERT INTO  administrateur (pseudo, mdp) VALUES (:pseudo, :mdp)');
@@ -63,10 +62,8 @@ class Model
                 //  var_dump($mdp);
                 $result = $requete->execute();
                 //   var_dump($result);
-                if ($result) {
-                    $register = 1;
-                }
-                return $register;
+
+                return $result;
         }
 
          public function listMail()

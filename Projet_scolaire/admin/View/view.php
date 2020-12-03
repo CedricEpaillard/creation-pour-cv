@@ -34,16 +34,16 @@
                 <h1 style="text-align :center;"> Mauvais pseudo ou mot de passe </h1>
                 <input type="text" name="pseudo" placeholder="pseudo" required />
                 <input type="password" name="password" placeholder="Mot de passe" required />
-                <input type="submit" name="submit" value="Sinscrire" />
+                <input type="submit" name="submit" value="Se connecter" />
             </form>';
             $this->display();
 
             }
         }
 
-        public function displayRegister($register) 
+        public function displayRegister($result) 
         {
-            if( $register == 1) {
+            if( $result == 1) {
                 echo  "<div class='inscrit'>
         <h3>Vous êtes inscrit avec succès.</h3>
         <p>Cliquez ici pour vous <a href='index.php?page=login'>connecter</a></p>
@@ -97,7 +97,7 @@
         {
         $this->page .= '
         <link rel="stylesheet" href="style.css">
-        <form class="form__register" name="form" method="POST" action="index.php?page=UpdateMailDb">
+        <form class="form__change__data__mail" name="form" method="POST" action="index.php?page=UpdateMailDb">
             <label>id</label>
             <input type="text" name="parm0" value="'.$parm[0].'"/>
             <label>mail</label>

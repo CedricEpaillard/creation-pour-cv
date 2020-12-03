@@ -31,8 +31,8 @@ class Controller
             case 'register_mdp':
                 $pseudo = (isset($_POST['pseudo'])) ? $_POST['pseudo'] : NULL;
                 $mdp = (isset($_POST['password'])) ? $_POST['password'] : NULL;
-              $register =  $this->model->registerMdp($pseudo,$mdp);
-                $this->view->displayRegister($register);
+              $result =  $this->model->registerMdp($pseudo,$mdp);
+                $this->view->displayRegister($result);
             break;
             case 'bddMail': 
                 $list = $this->model->listMail();
