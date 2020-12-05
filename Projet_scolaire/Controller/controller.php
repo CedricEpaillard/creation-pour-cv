@@ -17,6 +17,9 @@ class Controller
     public function dispatch()
     {
 
+    /**
+    * Affiche la page d'accueil
+    */
         $page = (isset($_GET['page'])) ? $_GET['page'] : "home";
         switch ($page) {
             case 'home':

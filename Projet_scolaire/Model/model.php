@@ -24,6 +24,10 @@ class Model
             );
     }
     // catch (Execption $e) {die('Erreur : '.$e->getMessage()); }
+
+    /**
+    * Ajouter une adresse mail
+    */
     public function addNewsletter($mail)
     {
 
@@ -50,6 +54,9 @@ class Model
         }
     }
 
+    /**
+    * Envoie de formulaire
+    */
     public function SendForm($mail, $textarea)
     {
         $mail = $_POST['mail'];
@@ -67,6 +74,9 @@ class Model
         }
     }
 
+    /**
+    * Afficher les news
+    */
     public function listNews()
     {
         $requete = "SELECT * FROM news";
@@ -78,6 +88,9 @@ class Model
         return $list;
     }
 
+    /**
+    * Afficher un patch note
+    */
     public function patchNoteEntier($id)
     {
         $requete = $this->connection->prepare("SELECT titre, contenu FROM news WHERE id=:id");
@@ -90,6 +103,9 @@ class Model
         return $list;
     }
 
+    /**
+    * Afficher la dernière news pour le teaser
+    */
     public function roadMap()
     {
         $requete = "SELECT spoiler FROM news WHERE id=(SELECT max(id) FROM news)";

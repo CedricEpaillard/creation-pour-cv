@@ -25,6 +25,9 @@ class Model
     // catch (Execption $e) {die('Erreur : '.$e->getMessage()); }
 
 
+    /**
+    * Se connecter
+    */
     public function login($pseudo,$mdp)
     {
             $requete =$this->connection->prepare('SELECT pseudo, mdp FROM  administrateur WHERE pseudo = :pseudo AND mdp = :mdp ');
@@ -66,6 +69,9 @@ class Model
                 return $result;
         }
 
+    /**
+    * Lister les mails
+    */
          public function listMail()
         {
             $requete = "SELECT * FROM bdd_mail";
@@ -77,6 +83,9 @@ class Model
             return $list;
         }
 
+    /**
+    * Choisir un mail
+    */
         public function takeMail($id)
         {
             $requete = $this->connection->prepare("SELECT id, mail FROM bdd_mail WHERE id=:id");
@@ -89,6 +98,9 @@ class Model
             return $list;
         }
 
+    /**
+    * Modifier un mail
+    */
         public function updateDb()
         {
             $id = isset($_POST['parm0']) ? $_POST['parm0'] : null;
@@ -102,6 +114,9 @@ class Model
             return $result;
         }
 
+    /**
+    * Ajouter une adresse mail
+    */
         public function addMailDb($mail)
         {
             $mail = isset($_POST['parm0']) ? $_POST['parm0'] : null;    
@@ -111,6 +126,9 @@ class Model
             return $result;
         }
 
+    /**
+    * Supprimer une adresse mail
+    */
         public function deleteDb()
         {
             $id = isset($_GET['id']) ? $_GET['id'] : null;    
@@ -120,6 +138,9 @@ class Model
             return $result;
         }
 
+    /**
+    * Lister les patch
+    */
         public function takeAllPatch()
         {
             $requete = "SELECT * FROM news";
@@ -131,6 +152,9 @@ class Model
             return $list;
         }
 
+    /**
+    * Ajouter un patch note
+    */
         public function addPatchNote($title,$spoiler,$contenu)
         {
             $title = isset($_POST['parm0']) ? $_POST['parm0'] : null;   
@@ -154,6 +178,9 @@ class Model
             }
         }
 
+    /**
+    * Affiher un patch ciblé
+    */
         public function takePatch($id)
         {
             $requete = $this->connection->prepare("SELECT id, titre, spoiler, contenu FROM news WHERE id=:id");
@@ -166,6 +193,9 @@ class Model
             return $list;
         }
 
+    /**
+    * Editer un patch
+    */
         public function updatePatchDb()
         {
             $id = isset($_POST['parm0']) ? $_POST['parm0'] : null;
@@ -183,6 +213,9 @@ class Model
             return $result;
         }
 
+    /**
+    * Supprimer un patch
+    */
         public function deletePatchDb()
         {
             $id = isset($_GET['id']) ? $_GET['id'] : null;    

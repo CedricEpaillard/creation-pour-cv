@@ -17,7 +17,10 @@ class Controller
     public function dispatch()
     {
 
-        $page = (isset($_GET['page'])) ? $_GET['page'] : "home";
+    /**
+    * Par défaut => retour au login
+    */
+        $page = (isset($_GET['page'])) ? $_GET['page'] : "login";
         switch ($page) {
             case 'login':
                 $this->view->displayLogin();

@@ -15,12 +15,18 @@
         }
 
 
+    /**
+    * Affiche la page pour se connecter
+    */
         public function displayLogin()
         {
             $this->page .= file_get_contents("html/login.html");
             $this->display();
         }
 
+    /**
+    * Si 1 => menu si 0 => erreur login
+    */
         public function displayHome($result)
         {
             if ($result == 1) {
@@ -41,6 +47,9 @@
             }
         }
 
+    /**
+    * Page pour s'enregistrer
+    */
         public function displayRegister($result) 
         {
             if( $result == 1) {
@@ -50,10 +59,13 @@
   </div>";
             }           
             else {
-                include('model.php');
+                include('register.php');
             }
         }
 
+    /**
+    * Affiche la liste des mails
+    */
         public function displayListMail($list)
         { 
     $this->page .= '<link rel="stylesheet" href="style.css">'; 
@@ -93,6 +105,9 @@
             $this->display();
         }
 
+    /**
+    * Changer id / mail
+    */
         public function displayChangeData($parm)
         {
         $this->page .= '
@@ -108,12 +123,18 @@
         $this->display();
         }
 
+    /**
+    * Ajouter une adresse mail
+    */
         public function displayFormAddDb()
         {
            $this->page .= file_get_contents('html/form.html');
            $this->display();
         }
 
+    /**
+    * Affiche les patch
+    */
         public function displayListPatch($list)
         {
                 $this->page .= '<link rel="stylesheet" href="style.css">';
@@ -157,12 +178,18 @@
                 $this->display();
             }
 
+    /**
+    * Afficher pour ajouter un patch note
+    */
             public function displayFormAddPatch()
             {
                 $this->page .= file_get_contents('html/addPatchNote.html');
                 $this->display();
             }
 
+    /**
+    * Ajouter un patch note
+    */
             public function displayPatchNoteAdd($result)
             {
                 if($result) {
@@ -174,6 +201,9 @@
                 }
             }
 
+    /**
+    * Changer les valeurs du patch note
+    */
             public function displayChangeDataPatch($parm)
             {
                 $this->page .= '<link rel="stylesheet" href="style.css">
@@ -202,6 +232,9 @@
                 }
             }
 
+    /**
+    * Supprimer un patch note
+    */
             public function displayResultDeletePatch($result)
             {
                 if($result) {
